@@ -15,6 +15,7 @@ jobs:
 
     - name: check
       run: |
+        cat ~/.bashrc
         source ~/.bashrc
         yc --help
 
