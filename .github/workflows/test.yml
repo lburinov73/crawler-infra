@@ -13,9 +13,8 @@ jobs:
     - name: Install yc
       run: 'curl -s https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash'
 
-    - name: source
-      run: 'source ~/.bashrc'
-
     - name: check
-      run: yc --help
+      run: |
+        source ~/.bashrc
+        yc --help
 
