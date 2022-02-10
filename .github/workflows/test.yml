@@ -16,7 +16,6 @@ jobs:
     - name: check
       shell: bash
       run: |
-        cat ~/.bashrc
         source ~/.bashrc
-        yc --help
+        echo $PATH
 
