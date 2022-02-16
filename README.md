@@ -1,4 +1,4 @@
-# Конфигурация terraform для crawler Kubernetes кластера в Yandex Cloud
+# Конфигурация terraform для Kubernetes кластера в Yandex Cloud
 
  - Требуется S3 хранилище для хранения tfstate файлов<br/>
    (см. ```backend.tf```)
@@ -15,7 +15,7 @@
 Для удаления кластера можно использовать Action *Terraform Destroy*<br/>
 (см. файл ```.github/workflows/terraform-destroy.yml```)
 
-# Helm chart-ы
+## Helm chart-ы проекта
 
  - В секреты YC_TOKEN, YC_CLOUD_ID и YC_FOLDER_ID нужно сохранить параметры для подключения к Yandex облаку (API Token и IDшники облака и каталога)
  - В секреты RMQ_USERNAME, RMQ_PASSWORD, RMQ_ERLANG_COOKIE нужно сохранить креденшелы для подключения к RabbitMQ, иначе будут взяты значения по умолчанию из ```values.yaml```
