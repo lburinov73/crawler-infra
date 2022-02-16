@@ -9,13 +9,15 @@
  - В секрет ```SERVICE_ACCOUNT_KEY_FILE``` нужно сохранить ключ сервисного аккаунта YC в формате base64<br/>
    ```cat key.json | base64 -i```
 
-Для создания кластера (или изменения его параметров) можно использовать Action Terraform Apply<br/>
+Для создания кластера (или изменения его параметров) можно использовать Action *Terraform Apply*<br/>
 (см. файл ```.github/workflows/terraform-apply.yml```)
 
-Для удаления кластера можно использовать Action Terraform Destroy<br/>
+Для удаления кластера можно использовать Action *Terraform Destroy*<br/>
 (см. файл ```.github/workflows/terraform-destroy.yml```)
 
 # Helm chart-ы
 
  - В секреты YC_TOKEN, YC_CLOUD_ID и YC_FOLDER_ID нужно сохранить параметры для подключения к Yandex облаку (API Token и IDшники облака и каталога)
-
+ - В секреты RMQ_USERNAME, RMQ_PASSWORD, RMQ_ERLANG_COOKIE нужно сохранить креденшелы для подключения к RabbitMQ, иначе будут взяты значения по умолчанию из ```values.yaml```
+Для деплоя приложения в кластер можно использовать Action *Deploy Project*<br/>
+(см. файл ```.github/workflows/deploy.yml```)
