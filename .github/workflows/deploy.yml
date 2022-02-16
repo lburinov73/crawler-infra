@@ -1,0 +1,47 @@
+name: deploy app to kubernetes cluster
+
+on: workflow_dispatch
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  CLUSTER_NAME: crawler-cluster
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check Out Repo 
+      uses: actions/checkout@v2
+
+    - name: Install yc
+      run: |
+        curl -s https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
+        echo "~/yandex-cloud/bin" >> $GITHUB_PATH
+        source ~/.bashrc
+
+    - name: Configure yc
+      run: |
+        yc config set token $YC_TOKEN
+        yc config set cloud-id $YC_CLOUD_ID
+        yc config set folder-id $YC_FOLDER_ID
+      env:
+        YC_TOKEN: ${{secrets.YC_TOKEN}}
+        YC_CLOUD_ID: ${{secrets.YC_CLOUD_ID}}
+        YC_FOLDER_ID: ${{secrets.YC_FOLDER_ID}}
+
+    - name: Create kubeconfig via yc
+      run: yc managed-kubernetes cluster get-credentials $CLUSTER_NAME --external
+
+    - name: Install helm
+      uses: azure/setup-helm@v1
+
+    - name: Deploy App
+      run: |
+        cd charts/crawler
+        helm dep update
+        helm upgrade --install crawler .
+

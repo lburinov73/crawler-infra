@@ -1,0 +1,9 @@
+rabbitmq:
+  auth:
+    username: user
+    password: pass
+    erlangCookie: hhonjhFT2cE7JCQgdUXETfpAgJx611eo
+
+mongodb:
+  auth:
+    enabled: false

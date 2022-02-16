@@ -1,0 +1,6 @@
+name: searchbot
+version: 0.1.0
+description: search engine crawler demo
+maintainers:
+  - name: Leonid Burinov
+    email: lburinov73@gmail.com
