@@ -1,4 +1,6 @@
-# Конфигурация terraform для Kubernetes кластера в Yandex Cloud
+# Проектная работа по курсу "DevOps практики и инструменты"
+
+## Конфигурация terraform для Kubernetes кластера в Yandex Cloud
 
  - Требуется S3 хранилище для хранения tfstate файлов<br/>
    (см. ```backend.tf```)
