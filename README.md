@@ -15,3 +15,7 @@
 Для удаления кластера можно использовать Action Terraform Destroy<br/>
 (см. файл ```.github/workflows/terraform-destroy.yml```)
 
+# Helm chart-ы
+
+ - В секреты YC_TOKEN, YC_CLOUD_ID и YC_FOLDER_ID нужно сохранить параметры для подключения к Yandex облаку (API Token и IDшники облака и каталога)
+

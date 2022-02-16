@@ -2,7 +2,7 @@ rabbitmq:
   auth:
     username: user
     password: pass
-    erlangCookie: hhonjhFT2cE7JCQgdUXETfpAgJx611eo
+    erlangCookie: cookie
 
 mongodb:
   auth:

@@ -43,5 +43,9 @@ jobs:
       run: |
         cd charts/crawler
         helm dep update
-        helm upgrade --install crawler .
+        helm upgrade --install crawler --set rabbitmq.auth.username=$RMQ_USERNAME,rabbitmq.auth.password=$RMQ_PASSWORD,rabbitmq.auth.erlangCookie=$RMQ_ERLANG_COOKIE .
+      env:
+        RMQ_USERNAME: ${{secrets.RMQ_USERNAME}}
+        RMQ_PASSWORD: ${{secrets.RMQ_PASSWORD}}
+        RMQ_ERLANG_COOKIE: ${{secrets.RMQ_ERLANG_COOKIE}}
 
