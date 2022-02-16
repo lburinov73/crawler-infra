@@ -1,0 +1,7 @@
+cloud_id                 = "b1gh707s3q2fqqms3k87"
+folder_id                = "b1g1dqu1ta0primcijg3"
+network_id               = "enp2achpr6nnm1dn2j0n"
+zone                     = "ru-central1-a"
+subnet_id                = "e9bucrfu0tjog71mkfvb"
+service_account_key_file = "key.json"
+service_account_id       = "aje1gph77e8mb58ehrak"

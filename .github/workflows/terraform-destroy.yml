@@ -1,0 +1,42 @@
+name: Terraform Destroy
+
+on: workflow_dispatch
+
+defaults:
+  run:
+    shell: bash
+    working-directory: scripts
+
+jobs:
+  terraform-destroy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check Out Repo 
+      uses: actions/checkout@v2
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    - name: Extract YC service account keyfile
+      run: 'echo "$SERVICE_ACCOUNT_KEY_FILE" | base64 -d >key.json'
+      env:
+        SERVICE_ACCOUNT_KEY_FILE: ${{secrets.SERVICE_ACCOUNT_KEY_FILE}}
+
+    - name: Extract YC S3 credentials
+      run: 'echo "$S3_CREDENTIALS" | base64 -d >.credentials'
+      shell: bash
+      env:
+        S3_CREDENTIALS: ${{secrets.S3_CREDENTIALS}}
+    
+    - name: Terraform Init
+      id: init
+      run: terraform init
+
+    - name: Terraform Validate
+      id: validate
+      run: terraform validate -no-color
+
+    - name: Terraform Destroy
+      id: destroy
+      run: terraform destroy -auto-approve -no-color
