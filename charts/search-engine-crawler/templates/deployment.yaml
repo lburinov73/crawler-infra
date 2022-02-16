@@ -64,13 +64,13 @@ spec:
           args:
             - {{ .Values.RMQ_HOST | default (printf "%s-rabbitmq" .Release.Name) }}.{{ .Release.Namespace }}.svc.cluster.local:5672
             - "-t" 
-            - "120"
+            - "60"
         - name: init-mongodb
           image: willwill/wait-for-it
           args:
             - {{ .Values.MONGO | default (printf "%s-mongodb" .Release.Name) }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.MONGO_PORT | default "27017" }}
             - "-t" 
-            - "120"
+            - "60"
 
       {{- with .Values.nodeSelector }}
       nodeSelector:

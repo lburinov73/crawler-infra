@@ -58,7 +58,7 @@ spec:
           args:
             - {{ .Values.MONGO | default (printf "%s-mongodb" .Release.Name) }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.MONGO_PORT | default "27017" }}
             - "-t"
-            - "120"
+            - "60"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

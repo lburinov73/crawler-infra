@@ -1,6 +1,6 @@
-name: searchbot
+name: crawler
 version: 0.1.0
-description: search engine crawler demo
+description: otus-devops-2021 final project
 maintainers:
   - name: Leonid Burinov
     email: lburinov73@gmail.com

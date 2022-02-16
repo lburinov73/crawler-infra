@@ -1,4 +1,4 @@
-name: deploy app to kubernetes cluster
+name: deploy crawler app
 
 on: workflow_dispatch
 
