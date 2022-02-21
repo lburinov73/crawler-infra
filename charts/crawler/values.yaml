@@ -9,6 +9,19 @@ nginx-ingress-controller:
         release: crawler
 
 kube-prometheus-stack:
+  defaultRules:
+    kubeProxy: false
+    etcd: false
+    kubeScheduler: false
+    kubeControllerManager: false
+  kubeProxy:
+    enabled: false
+  kubeEtcd:
+    enabled: false
+  kubeScheduler:
+    enabled: false
+  kubeControllerManager:
+    enabled: false
   prometheus:
     prometheusSpec:
       externalUrl: /prometheus
