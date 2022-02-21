@@ -1,9 +1,69 @@
+nginx-ingress-controller:
+  service:
+    loadBalancerIP: 84.201.130.75
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: crawler
+
+kube-prometheus-stack:
+  prometheus:
+    prometheusSpec:
+      externalUrl: /prometheus
+      routePrefix: /prometheus
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      paths:
+        - /prometheus
+  alertmanager:
+    alertmanagerSpec:
+      routePrefix: /alertmanager
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      paths:
+        - /alertmanager
+  grafana:
+#  adminPassword: lolkek
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+      path: "/grafana"
+    grafana.ini:
+      server:
+        root_url: "%(protocol)s://%(domain)s:%(http_port)s/grafana"
+        serve_from_sub_path: true
+
 rabbitmq:
   auth:
     username: user
     password: pass
     erlangCookie: cookie
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: crawler
 
 mongodb:
   auth:
     enabled: false
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: crawler
+
+search-engine-crawler:
+  monitoring:
+    enabled: true
+
+search-engine-ui:
+  monitoring:
+    enabled: true

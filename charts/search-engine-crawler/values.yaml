@@ -87,3 +87,5 @@ RMQ_PASSWORD: pass
 MONGO:
 MONGO_PORT: "27017"
 
+monitoring:
+  enabled: false
