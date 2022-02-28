@@ -1,5 +1,30 @@
 # Проектная работа по курсу "DevOps практики и инструменты"
 
+[Демо приложение](http://84.201.130.75/)
+
+[Prometheus](http://84.201.130.75/prometheus/)
+
+[Grafana](http://84.201.130.75/grafana/)
+
+[Crawler microservice repo](https://github.com/lburinov73/search_engine_crawler/)
+[UI microservice repo](https://github.com/lburinov73/search_engine_ui/)
+
+
+## Как запустить / как работает
+
+ - В репозиториях с кодом приложения использовать workflow build-and-test.yml<br/>
+   (см. файл ```.github/workflows/build-and-test.yml```)<br/>
+   В рамках этого workflow происходит checkout кода, запуск тестов, сборка образа и публикация его в GitHub Registry
+ - В infra-репозитории использовать workflow terraform-apply.yml<br/>
+   (см. файл ```.github/workflows/terraform-apply.yml```)<br/>
+   В рамках этого workflow будет развернут Managed Kubernetes кластер в YandexCloud
+ - В infra-репозитории использовать workflow deploy.yml<br/>
+   (см. файл ```.github/workflows/deploy.yml```)<br/>
+   В рамках этого workflow будет установлено приложение с зависимостями, а так же kube-prometheus-stack
+ - Зависимости приложения: mongodb - используется helm chart bitnami/mongodb и rabbitmq - используется bitnami/rabbitmq
+ - Prometheus Operator - используется chart [kube-prometheus-stack](https://prometheus-community.github.io/helm-charts)
+ - Ingress - используется chart bitnami/nginx-ingress-controller
+
 ## Конфигурация terraform для Kubernetes кластера в Yandex Cloud
 
  - Требуется S3 хранилище для хранения tfstate файлов<br/>
@@ -23,3 +48,28 @@
  - В секреты RMQ_USERNAME, RMQ_PASSWORD, RMQ_ERLANG_COOKIE нужно сохранить креденшелы для подключения к RabbitMQ, иначе будут взяты значения по умолчанию из ```values.yaml```
 Для деплоя приложения в кластер можно использовать Action *Deploy Project*<br/>
 (см. файл ```.github/workflows/deploy.yml```)
+
+
+## Скриншоты
+
+Сборка образа:
+<img src="./screenshots/build-and-test.png"/>
+
+Секреты репозитория infra:
+<img src="./screenshots/infra-secrets.png"/>
+
+Развертывание кластера с помощью Terraform:
+<img src="./screenshots/terraform-apply.png"/>
+
+Деплой приложения:
+<img src="./screenshots/deploy.png"/>
+
+Демо приложения:
+<img src="./screenshots/demo-app.png"/>
+
+Prometheus:
+<img src="./screenshots/prometheus-ui.png"/>
+
+Grafana:
+<img src="./screenshots/grafana.png"/>
+

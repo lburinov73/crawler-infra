@@ -1,0 +1,14 @@
+{{- if .Values.monitoring.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "search-engine-crawler.fullname" . }}
+  labels:
+    release: {{ .Release.Name }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "search-engine-crawler.selectorLabels" . | nindent 6 }}
+  endpoints:
+  - port: http
+{{- end }}

@@ -4,21 +4,9 @@ dependencies:
     version: 9.1.5
     repository: https://charts.bitnami.com/bitnami
 
-#  - name: ingress-nginx
-#    version: 4.0.17
-#    repository: https://kubernetes.github.io/ingress-nginx
-
   - name: kube-prometheus-stack
     version: 32.2.1
     repository: https://prometheus-community.github.io/helm-charts
-
-#  - name: kube-prometheus
-#    version: 6.6.5
-#    repository: https://charts.bitnami.com/bitnami
-
-#  - name: grafana-operator
-#    version: 2.2.4
-#    repository: https://charts.bitnami.com/bitnami
 
   - name: rabbitmq
     version: 8.28.1

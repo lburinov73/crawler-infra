@@ -52,6 +52,8 @@ kube-prometheus-stack:
         serve_from_sub_path: true
 
 rabbitmq:
+  persistence:
+    enabled: false
   auth:
     username: user
     password: pass
